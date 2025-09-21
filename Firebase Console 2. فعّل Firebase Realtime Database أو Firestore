@@ -1,0 +1,19 @@
+const firebaseConfig = {
+  apiKey: "YOUR_KEY",
+  authDomain: "YOUR_DOMAIN",
+  databaseURL: "YOUR_DB_URL",
+  projectId: "YOUR_ID",
+  storageBucket: "YOUR_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function publishPost() {
+  const title = document.getElementById('postTitle').value;
+  const content = document.getElementById('postContent').value;
+  db.ref("posts").push({ title, content });
+  alert("تم حفظ المنشور في Firebase");
+}
